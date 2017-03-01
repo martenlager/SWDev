@@ -9,5 +9,6 @@ public class PigLatinTranslatorTest {
     public void emptyWord() {
         PigLatinTranslator plt = new PigLatinTranslator();
         assertEquals("", plt.translate(""));
+        assertEquals("Hello World!", plt.translate("Hello World!"));
     }
 }
