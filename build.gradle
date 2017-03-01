@@ -7,6 +7,12 @@ dependencies {
 	testCompile 'junit:junit:4.12'
 }
 
+jar {
+    manifest {
+        attributes 'Main-Class': 'piglatin.Main'
+    }
+}
+
 // defaultTasks 'test'
 test.dependsOn 'cleanTest'
 
@@ -15,3 +21,5 @@ mainClassName = 'piglatin.Main'
 run {
   standardInput = System.in
 }
+
+version = 0.1
