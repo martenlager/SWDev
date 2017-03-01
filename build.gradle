@@ -11,3 +11,7 @@ dependencies {
 test.dependsOn 'cleanTest'
 
 mainClassName = 'piglatin.Main'
+
+run {
+  standardInput = System.in
+}
