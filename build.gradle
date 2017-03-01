@@ -1,0 +1,13 @@
+apply plugin: 'application'
+apply plugin: 'java'
+
+repositories { mavenCentral() }
+
+dependencies {
+	testCompile 'junit:junit:4.12'
+}
+
+// defaultTasks 'test'
+test.dependsOn 'cleanTest'
+
+mainClassName = 'piglatin.Main'
