@@ -15,6 +15,11 @@ jar {
 
 // defaultTasks 'test'
 test.dependsOn 'cleanTest'
+test {
+  beforeTest { descriptor ->
+     logger.lifecycle("Running test: ${descriptor}")
+  }
+}
 
 mainClassName = 'piglatin.Main'
 
