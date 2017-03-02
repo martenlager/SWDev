@@ -1,34 +1,58 @@
 package piglatin;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
 public class PigLatinTranslatorTest {
 
+    private PigLatinTranslator plt;
+
+    @Before
+    public void createTranslator() {
+        plt = new PigLatinTranslator();
+    }
+
     @Test
     public void emptyWord() {
-        PigLatinTranslator plt = new PigLatinTranslator();
         assertEquals("", plt.translate(""));
-        assertEquals(null, plt.translate(null));
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void nullWord() {
+        plt.translate(null);
+    }
+
+    @Test
+    public void oneCharWord() {
+        String[][] pairs = new String[][]{
+                new String[]{"Tay", "t"},
+                new String[]{"Qay", "q"},
+                new String[]{"Eay", "E"}
+        };
+        testTranslations(pairs);
     }
 
     @Test
     public void rule1() {
-        PigLatinTranslator plt = new PigLatinTranslator();
         String[][] pairs = new String[][]{
-                new String[]{"pig", "Igpay"},
-                new String[]{"Latin", "Atinlay"},
-                new String[]{"banana", "Ananabay"},
-                new String[]{"happy", "Appyhay"},
-                new String[]{"duck", "Uckday"},
-                new String[]{"latin", "Atinlay"},
-                new String[]{"dopest", "Opestday"},
-                new String[]{"me", "Emay"},
-                new String[]{"too", "Ootay"},
+                new String[]{"Igpay", "pig"},
+                new String[]{"Atinlay", "Latin"},
+                new String[]{"Ananabay", "banana"},
+                new String[]{"Appyhay", "happy"},
+                new String[]{"Uckday", "duck"},
+                new String[]{"Atinlay", "latin"},
+                new String[]{"Opestday", "dopest"},
+                new String[]{"Emay", "me"},
+                new String[]{"Ootay", "too"},
         };
-        for (String[] pair : pairs) {
-            assertEquals(pair[1], plt.translate(pair[0]));
+        testTranslations(pairs);
+    }
+
+    private void testTranslations(String[][] translationPairs) {
+        for (String[] pair : translationPairs) {
+            assertEquals(pair[0], plt.translate(pair[1]));
         }
     }
 }
