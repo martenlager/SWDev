@@ -6,15 +6,21 @@ import java.io.BufferedReader;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+        Score score = new Score();
         PigLatinTranslator plt = new PigLatinTranslator();
-        System.out.println("Enter english phrase to translate: ");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         while (true) {
+            System.out.println("Enter english phrase to translate: ");
             String src = reader.readLine();
             if (src.isEmpty()) {
                 break;
             }
-            System.out.println(plt.translate(src));
+            String answer = plt.translate(src);
+            String solution = plt.translate(src);
+            System.out.println("Correct translation: " + solution);
+            System.out.println("Score this translation: " + score.score(solution, answer));
+            System.out.println("Your total score: " + score.getScore());
+            
         }
     }
 }
