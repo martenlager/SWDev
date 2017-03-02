@@ -18,7 +18,7 @@ public class Main {
         while (true) {
             //System.out.println("Enter english phrase to translate: ");
         	String wordToTranslate = pw.proposeWord(1);
-        	System.out.println("Translate " + wordToTranslate + " to pigLatin:");
+        	System.out.println("Translate '" + wordToTranslate + "' to pigLatin:");
         	
         	String src = reader.readLine();
             if (src.isEmpty()) {
