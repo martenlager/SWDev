@@ -61,6 +61,20 @@ public class PigLatinTranslatorTest {
         testTranslations(pairs);
     }
 
+    @Test
+    public void consonantClusterRule() {
+        String[][] pairs = new String[][]{
+                new String[]{"Ashtray", "trash"},
+                new String[]{"Oveglay", "Glove"},
+                new String[]{"Anksthay", "thanks"},
+                new String[]{"Estay", "test"},
+                new String[]{"Eerschay", "cheers"},
+                new String[]{"Eshay", "Shesh"},
+                new String[]{"Ilesmay", "smile"}
+        };
+        testTranslations(pairs);
+    }
+
     private void testTranslations(String[][] translationPairs) {
         for (String[] pair : translationPairs) {
             assertEquals(pair[0], plt.translate(pair[1]));
