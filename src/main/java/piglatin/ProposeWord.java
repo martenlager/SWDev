@@ -1,9 +1,14 @@
 package piglatin;
 
 public class ProposeWord {
+  private int index = 4;
 
+  public String proposeWord() {
+    index = (index+1)%5;
+    return getWord(index+1);
+  }
 	
-	public String proposeWord(int index){
+	public String getWord(int index){
 		switch(index){
 		case 1: return "pig";
 		case 2: return "latin";

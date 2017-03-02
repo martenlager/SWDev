@@ -11,14 +11,11 @@ public class Main {
 
         ProposeWord pw = new ProposeWord();
         
-        //System.out.println("Translate " + pw.proposeWord(1) + " to pigLatin:");
-
         
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         int index = 1;
         while (true) {
-            //System.out.println("Enter english phrase to translate: ");
-        	String wordToTranslate = pw.proposeWord(index++);
+        	String wordToTranslate = pw.proposeWord();
         	System.out.println("Translate '" + wordToTranslate + "' to pigLatin:");
         	
         	String src = reader.readLine();
