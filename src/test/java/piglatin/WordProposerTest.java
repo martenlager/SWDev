@@ -4,13 +4,14 @@ import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
 
 public class WordProposerTest {
     private final List<String> alternatives = Arrays.asList(
             "pig", "latin", "banana", "cheers", "eat", "wordMissing");
-    private final WordProposer wordProposer = new WordProposer(alternatives);
+    private final WordProposer wordProposer = new WordProposer(alternatives, new Random());
 
     @Test
     public void getWord1() {
@@ -38,17 +39,32 @@ public class WordProposerTest {
     }
 
     @Test
+    public void getWord6() {
+        assertEquals("wordMissing", wordProposer.getWord(5));
+    }
+
+    @Test
+    public void dictionarySize() {
+        WordProposer p = new WordProposer(alternatives, new Random());
+        assert(p.getDictionarySize() == alternatives.size());
+    }
+
+    @Test
     public void proposeWord() {
-        for (String alternative : alternatives) {
-            assertEquals(alternative, wordProposer.proposeWord());
-        }
+        Random random1 = new Random(0);
+        Random random2 = new Random(0);
+        WordProposer p = new WordProposer(alternatives, random1);
+        int s = p.getDictionarySize();
+        int x = random2.nextInt(s);
+        assertEquals(p.getWord(x), p.proposeWord());
+        x = random2.nextInt(s);
+        assertEquals(p.getWord(x), p.proposeWord());
+        x = random2.nextInt(s);
+        assertEquals(p.getWord(x), p.proposeWord());
     }
 
     @Test
     public void wrapAround() {
-        for (String alternative : alternatives) {
-            assertEquals(alternative, wordProposer.proposeWord());
-        }
-        assertEquals("pig", wordProposer.proposeWord());
+        assertEquals("wordMissing", wordProposer.getWord(6));
     }
 }
