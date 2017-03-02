@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
 import java.util.List;
+import java.util.Random;
 
 public class Main {
 
@@ -14,7 +15,7 @@ public class Main {
         PigLatinTranslator plt = new PigLatinTranslator();
 
         List<String> alternatives = new SentenceReader().readFortunes();
-        WordProposer pw = new WordProposer(alternatives);
+        WordProposer pw = new WordProposer(alternatives, new Random());
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         long start = System.currentTimeMillis();
