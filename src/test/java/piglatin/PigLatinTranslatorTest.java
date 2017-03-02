@@ -29,13 +29,13 @@ public class PigLatinTranslatorTest {
         String[][] pairs = new String[][]{
                 new String[]{"Tay", "t"},
                 new String[]{"Qay", "q"},
-                new String[]{"Eay", "E"}
+                new String[]{"Eway", "E"}
         };
         testTranslations(pairs);
     }
 
     @Test
-    public void rule1() {
+    public void consonantRule() {
         String[][] pairs = new String[][]{
                 new String[]{"Igpay", "pig"},
                 new String[]{"Atinlay", "Latin"},
@@ -45,7 +45,18 @@ public class PigLatinTranslatorTest {
                 new String[]{"Atinlay", "latin"},
                 new String[]{"Opestday", "dopest"},
                 new String[]{"Emay", "me"},
-                new String[]{"Ootay", "too"},
+                new String[]{"Ootay", "too"}
+        };
+        testTranslations(pairs);
+    }
+
+    @Test
+    public void vowelRule() {
+        String[][] pairs = new String[][]{
+                new String[]{"Eatway", "eat"},
+                new String[]{"Omeletway", "Omelet"},
+                new String[]{"Areway", "are"},
+                new String[]{"Eggway", "egg"}
         };
         testTranslations(pairs);
     }

@@ -8,8 +8,13 @@ public class PigLatinTranslator {
         if (src.isEmpty()) {
             return src;
         }
-        String lc = src.toLowerCase();
-        String pl = lc.substring(1) + lc.substring(0, 1) + "ay";
-        return Character.toUpperCase(pl.charAt(0)) + pl.substring(1);
+        String lower = src.toLowerCase();
+        String pig;
+        if (lower.matches("[aeoui].*")) {
+            pig = lower + "way";
+        } else {
+            pig = lower.substring(1) + lower.charAt(0) + "ay";
+        }
+        return Character.toUpperCase(pig.charAt(0)) + pig.substring(1);
     }
 }
