@@ -3,21 +3,19 @@ package piglatin;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         Score score = new Score();
         PigLatinTranslator plt = new PigLatinTranslator();
 
-        ProposeWord pw = new ProposeWord();
-        
-        //System.out.println("Translate " + pw.proposeWord(1) + " to pigLatin:");
-
+        List<String> alternatives = new SentenceReader().readFortunes();
+        WordProposer pw = new WordProposer(alternatives);
         
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         int index = 1;
         while (true) {
-            //System.out.println("Enter english phrase to translate: ");
         	String wordToTranslate = pw.proposeWord(index++);
         	System.out.println("Translate '" + wordToTranslate + "' to pigLatin:");
         	
