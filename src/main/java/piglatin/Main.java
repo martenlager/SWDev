@@ -12,24 +12,23 @@ public class Main {
 
         List<String> alternatives = new SentenceReader().readFortunes();
         WordProposer pw = new WordProposer(alternatives);
-        
+
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        int index = 1;
         while (true) {
-        	String wordToTranslate = pw.proposeWord(index++);
-        	System.out.println("Translate '" + wordToTranslate + "' to pigLatin:");
-        	
-        	String src = reader.readLine();
+            String wordToTranslate = pw.proposeWord();
+            System.out.println("Translate '" + wordToTranslate + "' to pigLatin:");
+
+            String src = reader.readLine();
             if (src.isEmpty()) {
                 break;
             }
-        	
-        	String answer = src;
+
+            String answer = src;
             String solution = plt.translate(wordToTranslate);
             System.out.println("Correct translation: " + solution);
             System.out.println("Score this translation: " + score.score(solution, answer));
             System.out.println("Your total score: " + score.getScore());
-            
+
         }
     }
 }

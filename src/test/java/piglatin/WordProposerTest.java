@@ -8,34 +8,47 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class WordProposerTest {
-
     private final List<String> alternatives = Arrays.asList(
             "pig", "latin", "banana", "cheers", "eat", "wordMissing");
-    WordProposer wordProposer = new WordProposer(alternatives);
+    private final WordProposer wordProposer = new WordProposer(alternatives);
 
     @Test
-    public void proposeWord1() {
-        assertEquals("pig", wordProposer.proposeWord(0));
+    public void getWord1() {
+        assertEquals("pig", wordProposer.getWord(0));
     }
 
     @Test
-    public void proposeWord2() {
-        assertEquals("latin", wordProposer.proposeWord(1));
+    public void getWord2() {
+        assertEquals("latin", wordProposer.getWord(1));
     }
 
     @Test
-    public void proposeWord3() {
-        assertEquals("banana", wordProposer.proposeWord(2));
+    public void getWord3() {
+        assertEquals("banana", wordProposer.getWord(2));
     }
 
     @Test
-    public void proposeWord4() {
-        assertEquals("cheers", wordProposer.proposeWord(3));
+    public void getWord4() {
+        assertEquals("cheers", wordProposer.getWord(3));
     }
 
     @Test
-    public void proposeWord5() {
-        assertEquals("eat", wordProposer.proposeWord(4));
+    public void getWord5() {
+        assertEquals("eat", wordProposer.getWord(4));
     }
 
+    @Test
+    public void proposeWord() {
+        for (String alternative : alternatives) {
+            assertEquals(alternative, wordProposer.proposeWord());
+        }
+    }
+
+    @Test
+    public void wrapAround() {
+        for (String alternative : alternatives) {
+            assertEquals(alternative, wordProposer.proposeWord());
+        }
+        assertEquals("pig", wordProposer.proposeWord());
+    }
 }
