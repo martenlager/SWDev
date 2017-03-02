@@ -15,9 +15,10 @@ public class Main {
 
         
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int index = 1;
         while (true) {
             //System.out.println("Enter english phrase to translate: ");
-        	String wordToTranslate = pw.proposeWord(1);
+        	String wordToTranslate = pw.proposeWord(index++);
         	System.out.println("Translate '" + wordToTranslate + "' to pigLatin:");
         	
         	String src = reader.readLine();
