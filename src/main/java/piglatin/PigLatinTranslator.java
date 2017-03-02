@@ -11,6 +11,7 @@ public class PigLatinTranslator {
         if (src.isEmpty()) {
             return src;
         }
+        
         boolean firstUpper = Character.isUpperCase(src.charAt(0));
         
         String lower = src.toLowerCase().trim();

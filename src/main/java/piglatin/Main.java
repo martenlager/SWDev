@@ -7,7 +7,7 @@ import java.io.BufferedReader;
 public class Main {
     public static void main(String[] args) throws IOException {
         Score score = new Score();
-        PigLatinTranslator plt = new PigLatinTranslator();
+        PigLatinSentenceTranslator plt = new PigLatinSentenceTranslator();
 
         ProposeWord pw = new ProposeWord();
         
@@ -27,7 +27,7 @@ public class Main {
             }
         	
         	String answer = src;
-            String solution = plt.translate(wordToTranslate);
+            String solution = plt.translateSentence(wordToTranslate);
             System.out.println("Correct translation: " + solution);
             System.out.println("Score this translation: " + score.score(solution, answer));
             System.out.println("Your total score: " + score.getScore());
