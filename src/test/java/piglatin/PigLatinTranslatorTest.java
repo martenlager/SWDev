@@ -27,8 +27,8 @@ public class PigLatinTranslatorTest {
     @Test
     public void oneCharWord() {
         String[][] pairs = new String[][]{
-                new String[]{"Tay", "t"},
-                new String[]{"Qay", "q"},
+                new String[]{"tay", "t"},
+                new String[]{"qay", "q"},
                 new String[]{"Eway", "E"}
         };
         testTranslations(pairs);
@@ -37,15 +37,15 @@ public class PigLatinTranslatorTest {
     @Test
     public void consonantRule() {
         String[][] pairs = new String[][]{
-                new String[]{"Igpay", "pig"},
+                new String[]{"igpay", "pig"},
                 new String[]{"Atinlay", "Latin"},
-                new String[]{"Ananabay", "banana"},
-                new String[]{"Appyhay", "happy"},
-                new String[]{"Uckday", "duck"},
-                new String[]{"Atinlay", "latin"},
-                new String[]{"Opestday", "dopest"},
-                new String[]{"Emay", "me"},
-                new String[]{"Ootay", "too"}
+                new String[]{"ananabay", "banana"},
+                new String[]{"appyhay", "happy"},
+                new String[]{"uckday", "duck"},
+                new String[]{"atinlay", "latin"},
+                new String[]{"opestday", "dopest"},
+                new String[]{"emay", "me"},
+                new String[]{"ootay", "too"}
         };
         testTranslations(pairs);
     }
@@ -53,10 +53,10 @@ public class PigLatinTranslatorTest {
     @Test
     public void vowelRule() {
         String[][] pairs = new String[][]{
-                new String[]{"Eatway", "eat"},
+                new String[]{"eatway", "eat"},
                 new String[]{"Omeletway", "Omelet"},
-                new String[]{"Areway", "are"},
-                new String[]{"Eggway", "egg"}
+                new String[]{"areway", "are"},
+                new String[]{"eggway", "egg"}
         };
         testTranslations(pairs);
     }
@@ -64,13 +64,13 @@ public class PigLatinTranslatorTest {
     @Test
     public void consonantClusterRule() {
         String[][] pairs = new String[][]{
-                new String[]{"Ashtray", "trash"},
+                new String[]{"ashtray", "trash"},
                 new String[]{"Oveglay", "Glove"},
-                new String[]{"Anksthay", "thanks"},
-                new String[]{"Estay", "test"},
-                new String[]{"Eerschay", "cheers"},
+                new String[]{"anksthay", "thanks"},
+                new String[]{"estay", "test"},
+                new String[]{"eerschay", "cheers"},
                 new String[]{"Eshay", "Shesh"},
-                new String[]{"Ilesmay", "smile"}
+                new String[]{"ilesmay", "smile"}
         };
         testTranslations(pairs);
     }

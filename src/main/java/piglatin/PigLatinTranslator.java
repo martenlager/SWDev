@@ -11,6 +11,8 @@ public class PigLatinTranslator {
         if (src.isEmpty()) {
             return src;
         }
+        boolean firstUpper = Character.isUpperCase(src.charAt(0));
+        
         String lower = src.toLowerCase().trim();
         String pig;
         Pattern consonant = Pattern.compile("^([^aeouiy]+)(.*)");
@@ -26,6 +28,9 @@ public class PigLatinTranslator {
         } else {
             pig = lower + "way";
         }
-        return Character.toUpperCase(pig.charAt(0)) + pig.substring(1);
+        if(firstUpper)
+        	return Character.toUpperCase(pig.charAt(0)) + pig.substring(1);
+        else
+        	return pig;
     }
 }
