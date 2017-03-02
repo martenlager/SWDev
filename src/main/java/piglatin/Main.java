@@ -23,10 +23,9 @@ public class Main {
             if (src.isEmpty()) {
                 break;
             }
-            
         	
-        	String answer = plt.translate(src);
-            String solution = plt.translate(src);
+        	String answer = src;
+            String solution = plt.translate(pw.proposeWord(1));
             System.out.println("Correct translation: " + solution);
             System.out.println("Score this translation: " + score.score(solution, answer));
             System.out.println("Your total score: " + score.getScore());
