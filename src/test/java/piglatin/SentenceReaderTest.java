@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.util.List;
 
+import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.assertEquals;
 
 public class SentenceReaderTest {
@@ -23,7 +24,11 @@ public class SentenceReaderTest {
     }
 
     @Test
-    public void readFile() throws IOException {
-        List<String> list = reader.read(SentenceReaderTest.class.getResourceAsStream("fortunes.txt"));
+    public void readFortunes() throws IOException {
+        List<String> list = reader.readFortunes();
+        assertFalse("multiple sentences", list.isEmpty());
+        for (String fortune : list) {
+            assertFalse("non-empty", fortune.isEmpty());
+        }
     }
 }
