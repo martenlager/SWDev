@@ -17,7 +17,8 @@ public class Main {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         while (true) {
             //System.out.println("Enter english phrase to translate: ");
-        	System.out.println("Translate " + pw.proposeWord(1) + " to pigLatin:");
+        	String wordToTranslate = pw.proposeWord(1);
+        	System.out.println("Translate " + wordToTranslate + " to pigLatin:");
         	
         	String src = reader.readLine();
             if (src.isEmpty()) {
@@ -25,7 +26,7 @@ public class Main {
             }
         	
         	String answer = src;
-            String solution = plt.translate(pw.proposeWord(1));
+            String solution = plt.translate(wordToTranslate);
             System.out.println("Correct translation: " + solution);
             System.out.println("Score this translation: " + score.score(solution, answer));
             System.out.println("Your total score: " + score.getScore());
