@@ -15,15 +15,15 @@ public class PigLatinSentenceTranslator {
         int length = src.length();
         
         boolean addSentenceEnd = false;
-        System.out.println("");
-        System.out.println(src);
+        //System.out.println("");
+        //System.out.println(src);
         if(src.charAt(length-1) == '.'){
         	System.out.println("in loop!");
         	src = src.substring(0, src.length()-1);
         	addSentenceEnd = true;
         }
-        System.out.println("");
-        System.out.println(src);
+        //System.out.println("");
+        //System.out.println(src);
         String[] words = src.split(" "); 
 
         
@@ -42,7 +42,7 @@ public class PigLatinSentenceTranslator {
         strOutput = strOutput.trim();
         if(addSentenceEnd)
         	strOutput = strOutput.concat(".");
-        System.out.println("Result: " + strOutput);
+        //System.out.println("Result: " + strOutput);
 		return strOutput.trim();
 	}
 }
