@@ -6,6 +6,9 @@ import java.io.BufferedReader;
 import java.util.List;
 
 public class Main {
+
+    private static final long GAME_TIME = 5 * 60 * 1000;
+
     public static void main(String[] args) throws IOException {
         Score score = new Score();
         PigLatinTranslator plt = new PigLatinTranslator();
@@ -14,9 +17,11 @@ public class Main {
         WordProposer pw = new WordProposer(alternatives);
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        while (true) {
+        long start = System.currentTimeMillis();
+        System.out.println("Running pig latin translator game for 5 minutes.");
+        while (System.currentTimeMillis() - start < GAME_TIME) {
             String wordToTranslate = pw.proposeWord();
-            System.out.println("Translate '" + wordToTranslate + "' to pigLatin:");
+            System.out.println("Translate '" + wordToTranslate + "' to pig latin:");
 
             String src = reader.readLine();
             if (src.isEmpty()) {
@@ -28,7 +33,8 @@ public class Main {
             System.out.println("Correct translation: " + solution);
             System.out.println("Score this translation: " + score.score(solution, answer));
             System.out.println("Your total score: " + score.getScore());
-
         }
+        System.out.println("Time out reached");
+        System.out.println("Final score: " + score.getScore());
     }
 }
