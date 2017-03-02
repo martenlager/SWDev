@@ -41,4 +41,17 @@ public class ScoreTest {
         Score score = new Score();
         assert(score.score(null, "") == 0);
     }
+
+    // Test that the score accumulates in the class on repeated scoring requests
+    @Test
+    public void accumulate() {
+      Score score = new Score();
+      assert(score.getScore() == 0);
+      assert(score.score("a", "a") == 1);
+      assert(score.score("b", "b") == 1);
+      assert(score.score("c", "c") == 1);
+      assert(score.score("d", "a") == 0);
+      assert(score.getScore() == 3);
+    }
+  
 }
