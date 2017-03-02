@@ -7,7 +7,9 @@ import java.io.BufferedReader;
 public class Main {
     public static void main(String[] args) throws IOException {
         PigLatinTranslator plt = new PigLatinTranslator();
-        System.out.println("Enter english phrase to translate: ");
+        ProposeWord pw = new ProposeWord();
+        
+        System.out.println("Translate " + pw.proposeWord(1) + " to pigLatin:");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         while (true) {
             String src = reader.readLine();
