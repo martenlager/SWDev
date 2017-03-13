@@ -86,6 +86,13 @@ public class PigLatinSentenceTranslatorTest {
         testTranslations(sentence);
     }
 
+    @Test
+    public void testComma() {
+        testTranslations(new String[][]{
+            new String[]{"Ordsway areway onelylay, entencesay areway iresometay.", "Words are lonely, sentences are tiresome."}
+        });
+    }
+
     private void testTranslations(String[][] translationPairs) {
         for (String[] pair : translationPairs) {
             assertEquals(pair[0], plt.translateSentence(pair[1]));
