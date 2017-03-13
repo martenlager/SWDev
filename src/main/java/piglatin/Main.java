@@ -10,6 +10,8 @@ public class Main {
     private static final long GAME_TIME = 5 * 60 * 1000;
 
     public static void main(String[] args) throws IOException {
+        Tutorial.run();
+
         Score score = new Score();
         PigLatinSentenceTranslator plt = new PigLatinSentenceTranslator();
 
