@@ -4,7 +4,7 @@ apply plugin: 'java'
 repositories { mavenCentral() }
 
 dependencies {
-	testCompile 'junit:junit:4.12'
+    testCompile 'junit:junit:4.12'
 }
 
 jar {
@@ -16,15 +16,15 @@ jar {
 // defaultTasks 'test'
 test.dependsOn 'cleanTest'
 test {
-  beforeTest { descriptor ->
-     logger.lifecycle("Running test: ${descriptor}")
-  }
+    beforeTest { descriptor ->
+        logger.lifecycle("Running test: ${descriptor}")
+    }
 }
 
 mainClassName = 'piglatin.Main'
 
 run {
-  standardInput = System.in
+    standardInput = System.in
 }
 
-version = 0.1
+version = 0.3
