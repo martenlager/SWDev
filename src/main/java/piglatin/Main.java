@@ -3,10 +3,8 @@ package piglatin;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
-import java.util.List;
-import java.util.Random;
-import java.util.StringTokenizer;
-import java.util.ArrayList;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -17,13 +15,10 @@ public class Main {
         PigLatinSentenceTranslator plt = new PigLatinSentenceTranslator();
 
         List<String> alternatives = new SentenceReader().readFortunes();
-        List<String> words = new ArrayList<>();
-        for (String sentence : alternatives) {
-            StringTokenizer t = new StringTokenizer(sentence, " \t.");
-            while (t.hasMoreTokens()) {
-                words.add(t.nextToken());
-            }
-        }
+        List<String> words = alternatives.stream()
+                .flatMap(s -> Arrays.stream(s.split("[^\\p{Alpha}'`]")))
+                .filter(word -> word.length() > 1)
+                .collect(Collectors.toList());
         WordProposer pw = new WordProposer(words, new Random());
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
