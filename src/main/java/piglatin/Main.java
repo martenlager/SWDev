@@ -19,10 +19,10 @@ public class Main {
         List<String> alternatives = new SentenceReader().readFortunes();
         List<String> words = new ArrayList<>();
         for (String sentence : alternatives) {
-          StringTokenizer t = new StringTokenizer(sentence, " \t.");
-          while(t.hasMoreTokens()) {
-            words.add(t.nextToken());
-          }
+            StringTokenizer t = new StringTokenizer(sentence, " \t.");
+            while (t.hasMoreTokens()) {
+                words.add(t.nextToken());
+            }
         }
         WordProposer pw = new WordProposer(words, new Random());
 
@@ -36,8 +36,8 @@ public class Main {
             String src = reader.readLine();
             if (src.isEmpty()) {
                 break;
-            }    	
-        	String answer = src;
+            }
+            String answer = src;
             String solution = plt.translateSentence(wordToTranslate);
 
             System.out.println("Correct translation: " + solution);
