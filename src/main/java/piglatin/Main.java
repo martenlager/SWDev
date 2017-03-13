@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Main {
 
@@ -28,11 +27,10 @@ public class Main {
             if (src.isEmpty()) {
                 break;
             }
-            String answer = src;
             String solution = plt.translateSentence(wordToTranslate);
 
             System.out.println("Correct translation: " + solution);
-            System.out.println("Score this translation: " + score.score(solution, answer));
+            System.out.println("Score this translation: " + score.score(solution, src));
             System.out.println("Your total score: " + score.getScore());
         }
         System.out.println("Time out reached");
