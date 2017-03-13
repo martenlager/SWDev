@@ -15,11 +15,7 @@ public class Main {
         PigLatinSentenceTranslator plt = new PigLatinSentenceTranslator();
 
         List<String> alternatives = new SentenceReader().readFortunes();
-        List<String> words = alternatives.stream()
-                .flatMap(s -> Arrays.stream(s.split("[^\\p{Alpha}'`]")))
-                .filter(word -> word.length() > 1)
-                .collect(Collectors.toList());
-        WordProposer pw = new WordProposer(words, new Random());
+        WordProposer pw = new WordProposer(alternatives, new Random());
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         long start = System.currentTimeMillis();

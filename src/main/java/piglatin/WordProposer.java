@@ -1,10 +1,9 @@
 package piglatin;
 
-import java.util.List;
-import java.util.Random;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class WordProposer {
-
     private int index;
     private final List<String> alternatives;
     private Random random;
@@ -16,8 +15,13 @@ public class WordProposer {
      * @param random       Random sequence generator
      */
     public WordProposer(List<String> alternatives, final Random random) {
-        this.alternatives = alternatives;
-        index = alternatives.size() - 1;
+    	SortedSet<String> sentenceSet = new TreeSet<>((o1,o2) -> o1.length()-o2.length());
+    	sentenceSet.addAll(alternatives);
+    	sentenceSet.addAll(alternatives.stream()
+                .flatMap(s -> Arrays.stream(s.split("[^\\p{Alpha}'`]")))
+                .filter(word -> word.length() > 1)
+                .collect(Collectors.toList()));
+    	this.alternatives = new ArrayList<>(sentenceSet);
         this.random = random;
     }
 
@@ -35,7 +39,10 @@ public class WordProposer {
     Proposes a random word from the alternatives.
     */ 
     public String proposeWord() {
-        return getWord(random.nextInt(getDictionarySize()));
+    	int location = (int) (this.alternatives.size()/20*random.nextDouble());
+    	location = Math.max(location, 1);
+    	index += location;
+    	return getWord(index);
     }
 
     /**
