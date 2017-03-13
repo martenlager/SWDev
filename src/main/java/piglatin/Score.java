@@ -12,7 +12,7 @@ class Score {
      * Scores a string.
      * Returns the single score but also sums up internally.
      *
-     * @see getScore
+     * @see Score#getScore
      */
     public int score(final String solution, final String answer) {
         StringTokenizer t1 = new StringTokenizer(solution);

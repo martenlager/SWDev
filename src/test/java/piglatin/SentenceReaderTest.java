@@ -9,7 +9,7 @@ import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.assertEquals;
 
 public class SentenceReaderTest {
-    private SentenceReader reader = new SentenceReader();
+    private final SentenceReader reader = new SentenceReader();
 
     @Test(expected = NullPointerException.class)
     public void readEmpty() throws IOException {

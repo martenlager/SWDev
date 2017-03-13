@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 public class WordProposer {
     private int index;
     private final List<String> alternatives;
-    private Random random;
+    private final Random random;
 
     /**
      * Constructor.
@@ -15,7 +15,7 @@ public class WordProposer {
      * @param random       Random sequence generator
      */
     public WordProposer(List<String> alternatives, final Random random) {
-    	SortedSet<String> sentenceSet = new TreeSet<>((o1,o2) -> o1.length()-o2.length());
+    	SortedSet<String> sentenceSet = new TreeSet<>(Comparator.comparingInt(String::length));
     	sentenceSet.addAll(alternatives);
     	sentenceSet.addAll(alternatives.stream()
                 .flatMap(s -> Arrays.stream(s.split("[^\\p{Alpha}'`]")))
