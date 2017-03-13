@@ -20,6 +20,9 @@ public class WordProposer {
         this.random = random;
     }
 
+    /**
+    Returns a word from one of the alternatives. Chooses the word with index 'index'.
+    */ 
     public String getWord(int index) {
         if (index >= alternatives.size()) {
             index = alternatives.size() - 1;
@@ -27,11 +30,16 @@ public class WordProposer {
         return alternatives.get(index);
     }
 
+    /**
+    Proposes a random word from the alternatives.
+    */ 
     public String proposeWord() {
         return getWord(random.nextInt(getDictionarySize()));
     }
 
-
+    /**
+    Checks the size of the dictionary, i.e. how many words there is in the dictionary.
+    */ 
     public int getDictionarySize() {
         return alternatives.size();
     }
