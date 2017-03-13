@@ -7,64 +7,44 @@ import java.util.List;
 import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class WordProposerTest {
+
+	
     private final List<String> alternatives = Arrays.asList(
-            "pig", "latin", "banana", "cheers", "eat", "wordMissing");
+            "pig", "latin", "banana", "cheers", "eat", "wordMissing", "Pig latin banana cheers." , "Pig latin banana cheers eat.");
     private final WordProposer wordProposer = new WordProposer(alternatives, new Random());
 
     @Test
-    public void getWord1() {
-        assertEquals("pig", wordProposer.getWord(0));
+    public void testIfDifficultyIsIncreasing() {
+    	int difficulty = 0;
+    	for(int i = 0; i<wordProposer.getDictionarySize();i++){
+    		assertEquals(true, difficulty <= wordProposer.proposeWord().length());
+    		difficulty = wordProposer.proposeWord().length();
+    	}
+    }
+    
+    @Test
+    public void testIfNotCrashingWhenGoingOverMaxNumbers() {
+    	for(int i = 0; i<wordProposer.getDictionarySize()+10;i++){
+    		wordProposer.proposeWord().length();
+    	}
+    	assertNotNull(wordProposer.proposeWord());
+    }
+    
+    @Test
+    public void checkIfNotNull() {
+    	assertNotNull(wordProposer.proposeWord());
     }
 
     @Test
-    public void getWord2() {
-        assertEquals("latin", wordProposer.getWord(1));
+    public void proposeWordDeterministic() {
+        WordProposer p = new WordProposer(alternatives, new Random(0));
+        WordProposer s = new WordProposer(alternatives, new Random(0));
+        assertEquals(p.proposeWord(), s.proposeWord());
+        assertEquals(p.proposeWord(), s.proposeWord());
+        assertEquals(p.proposeWord(), s.proposeWord());
     }
 
-    @Test
-    public void getWord3() {
-        assertEquals("banana", wordProposer.getWord(2));
-    }
-
-    @Test
-    public void getWord4() {
-        assertEquals("cheers", wordProposer.getWord(3));
-    }
-
-    @Test
-    public void getWord5() {
-        assertEquals("eat", wordProposer.getWord(4));
-    }
-
-    @Test
-    public void getWord6() {
-        assertEquals("wordMissing", wordProposer.getWord(5));
-    }
-
-    @Test
-    public void dictionarySize() {
-        WordProposer p = new WordProposer(alternatives, new Random());
-        assertEquals(alternatives.size(), p.getDictionarySize());
-    }
-
-    @Test
-    public void proposeWord() {
-        Random random1 = new Random(0);
-        Random random2 = new Random(0);
-        WordProposer p = new WordProposer(alternatives, random1);
-        int s = p.getDictionarySize();
-        int x = random2.nextInt(s);
-        assertEquals(p.getWord(x), p.proposeWord());
-        x = random2.nextInt(s);
-        assertEquals(p.getWord(x), p.proposeWord());
-        x = random2.nextInt(s);
-        assertEquals(p.getWord(x), p.proposeWord());
-    }
-
-    @Test
-    public void wrapAround() {
-        assertEquals("wordMissing", wordProposer.getWord(6));
-    }
 }
