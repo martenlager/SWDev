@@ -8,11 +8,12 @@ public class WordProposer {
     private final List<String> alternatives;
     private Random random;
 
-  /**
-    Constructor.
-    @param alternatives Word dictionary
-    @param random Random sequence generator
-  */
+    /**
+     * Constructor.
+     *
+     * @param alternatives Word dictionary
+     * @param random       Random sequence generator
+     */
     public WordProposer(List<String> alternatives, final Random random) {
     	SortedSet<String> sentenceSet = new TreeSet<>((o1,o2) -> o1.length()-o2.length());
     	sentenceSet.addAll(alternatives);

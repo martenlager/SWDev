@@ -46,7 +46,7 @@ public class WordProposerTest {
     @Test
     public void dictionarySize() {
         WordProposer p = new WordProposer(alternatives, new Random());
-        assert(p.getDictionarySize() == alternatives.size());
+        assertEquals(alternatives.size(), p.getDictionarySize());
     }
 
     @Test

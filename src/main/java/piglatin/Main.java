@@ -3,10 +3,8 @@ package piglatin;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
-import java.util.List;
-import java.util.Random;
-import java.util.StringTokenizer;
-import java.util.ArrayList;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -29,8 +27,8 @@ public class Main {
             String src = reader.readLine();
             if (src.isEmpty()) {
                 break;
-            }    	
-        	String answer = src;
+            }
+            String answer = src;
             String solution = plt.translateSentence(wordToTranslate);
 
             System.out.println("Correct translation: " + solution);

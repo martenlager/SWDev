@@ -64,24 +64,24 @@ public class PigLatinSentenceTranslatorTest {
     @Test
     public void consonantClusterRule() {
         String[][] pairs = new String[][]{
-        	new String[]{"ashtray", "trash"},
-            new String[]{"Oveglay", "Glove"},
-            new String[]{"anksthay", "thanks"},
-            new String[]{"estay", "test"},
-            new String[]{"eerschay", "cheers"},
-            new String[]{"Eshay", "Shesh"},
-            new String[]{"ilesmay", "smile"}
+                new String[]{"ashtray", "trash"},
+                new String[]{"Oveglay", "Glove"},
+                new String[]{"anksthay", "thanks"},
+                new String[]{"estay", "test"},
+                new String[]{"eerschay", "cheers"},
+                new String[]{"Eshay", "Shesh"},
+                new String[]{"ilesmay", "smile"}
         };
         testTranslations(pairs);
     }
-    
+
     @Test
     public void sentences() {
         String[][] sentence = new String[][]{
-        	new String[]{"ashtray Oveglay anksthay estay eerschay Eshay ilesmay", "trash Glove thanks test cheers Shesh smile"},
-        	//new String[]{"ashtray Oveglay anksthay estay eerschay Eshay ilesmay.", "trash Glove thanks test cheers Shesh smile."},
-        	//new String[]{"Ashtray oveglay anksthay estay eerschay eshay ilesmay.", "Trash glove thanks test cheers shesh smile."},
-        	
+                new String[]{"ashtray Oveglay anksthay estay eerschay Eshay ilesmay", "trash Glove thanks test cheers Shesh smile"},
+                new String[]{"ashtray Oveglay anksthay estay eerschay Eshay ilesmay.", "trash Glove thanks test cheers Shesh smile."},
+                new String[]{"Ashtray oveglay anksthay estay eerschay eshay ilesmay.", "Trash glove thanks test cheers shesh smile."},
+
         };
         testTranslations(sentence);
     }
