@@ -9,11 +9,12 @@ public class WordProposer {
     private final List<String> alternatives;
     private Random random;
 
-  /**
-    Constructor.
-    @param alternatives Word dictionary
-    @param random Random sequence generator
-  */
+    /**
+     * Constructor.
+     *
+     * @param alternatives Word dictionary
+     * @param random       Random sequence generator
+     */
     public WordProposer(List<String> alternatives, final Random random) {
         this.alternatives = alternatives;
         index = alternatives.size() - 1;
