@@ -32,7 +32,6 @@ public class ScoreTest {
     public void emptyInput() {
         Score score = new Score();
         assertEquals(0, score.score("Ellohay", ""));
-        assertEquals(0, score.score("Ellohay", null));
     }
 
     // Empty solution is a bug
@@ -40,6 +39,12 @@ public class ScoreTest {
     public void nullSolution() {
         Score score = new Score();
         assertEquals(0, score.score(null, ""));
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void nullAnswer() {
+        Score score = new Score();
+        assertEquals(0, score.score("Ellohay", null));
     }
 
     // Test that the score accumulates in the class on repeated scoring requests
@@ -52,5 +57,26 @@ public class ScoreTest {
         assertEquals(1, score.score("c", "c"));
         assertEquals(0, score.score("d", "a"));
         assertEquals(3, score.getScore());
+    }
+
+    @Test
+    public void testPhrase() {
+        Score score = new Score();
+        assertEquals(3, score.score("a b c", "a b c"));
+        assertEquals(1, score.score("a b c", "a c b"));
+        assertEquals(0, score.score("a b", "d e"));
+        assertEquals(0, score.score("a b", ""));
+        assertEquals(4, score.getScore());
+    }
+
+    @Test
+    public void testSentence() {
+        Score score = new Score();
+        assertEquals(3, score.score("a b c.", "a b c."));
+        assertEquals(2, score.score("a b c.", "a b c"));
+        assertEquals(2, score.score("a b, c.", "a b c."));
+        assertEquals(1, score.score("a b, c.", "a b , c."));
+        assertEquals(1, score.score("a b, c.", "a   b , c."));
+        assertEquals(9, score.getScore());
     }
 }
