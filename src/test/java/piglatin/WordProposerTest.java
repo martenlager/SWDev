@@ -39,7 +39,7 @@ public class WordProposerTest {
     }
 
     @Test
-    public void proposeWordDeterministic() {
+    public void proposeWordDeterministicTest() {
         WordProposer p = new WordProposer(alternatives, new Random(0));
         WordProposer s = new WordProposer(alternatives, new Random(0));
         assertEquals(p.proposeWord(), s.proposeWord());
