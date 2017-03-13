@@ -5,14 +5,13 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class PigLatinSentenceTranslator {
+
+    private static final String NON_ALPHA = "[^\\p{Alpha}]";
+
     String translateSentence(String src) {
-        String translation = Arrays.stream(src.split("[^\\p{Alpha}'`]"))
-                .map(new PigLatinTranslator()::translate)
-                .collect(Collectors.joining(" "));
-        if (Pattern.matches(".*?\\p{P}$", src)) {
-            // Matches anything followed by a punctuation character
-            return translation + src.charAt(src.length() - 1);
-        }
-        return translation;
+        return Arrays.stream(src.split("(?<=" + NON_ALPHA + ")|(?=" + NON_ALPHA + ")"))
+                .map(w -> Pattern.matches(NON_ALPHA + "+", w) ? w : new PigLatinTranslator().translate(w))
+                .collect(Collectors.joining(""));
     }
+
 }
