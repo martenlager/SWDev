@@ -17,6 +17,15 @@ public class WordProposerTest {
     private final WordProposer wordProposer = new WordProposer(alternatives, new Random());
 
     @Test
+    public void testThatShouldNotPass() {
+    	int difficulty = 0;
+    	for(int i = 0; i<wordProposer.getDictionarySize();i++){
+    		assertEquals(false, difficulty <= wordProposer.proposeWord().length());
+    		difficulty = wordProposer.proposeWord().length();
+    	}
+    }
+    
+    @Test
     public void testIfDifficultyIsIncreasing() {
     	int difficulty = 0;
     	for(int i = 0; i<wordProposer.getDictionarySize();i++){
