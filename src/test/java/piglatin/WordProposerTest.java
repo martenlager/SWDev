@@ -15,15 +15,6 @@ public class WordProposerTest {
     private final List<String> alternatives = Arrays.asList(
             "pig", "latin", "banana", "cheers", "eat", "wordMissing", "Pig latin banana cheers." , "Pig latin banana cheers eat.");
     private final WordProposer wordProposer = new WordProposer(alternatives, new Random());
-
-    @Test
-    public void testThatShouldNotPass() {
-    	int difficulty = 0;
-    	for(int i = 0; i<wordProposer.getDictionarySize();i++){
-    		assertEquals(false, difficulty <= wordProposer.proposeWord().length());
-    		difficulty = wordProposer.proposeWord().length();
-    	}
-    }
     
     @Test
     public void testIfDifficultyIsIncreasing() {
