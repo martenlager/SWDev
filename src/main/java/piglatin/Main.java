@@ -20,13 +20,13 @@ public class Main {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         long start = System.currentTimeMillis();
-        System.out.println("Running pig latin translator game for 5 minutes.");
+        System.out.println("Running pig latin translator game for 5 minutes.");	
         while (System.currentTimeMillis() - start < GAME_TIME) {
             String wordToTranslate = pw.proposeWord();
             System.out.println("Translate '" + wordToTranslate + "' to pig latin:");
 
             String src = reader.readLine();
-            if (src.isEmpty()) {
+            if (src.equals("exit")) {
                 break;
             }
             String solution = plt.translateSentence(wordToTranslate);
